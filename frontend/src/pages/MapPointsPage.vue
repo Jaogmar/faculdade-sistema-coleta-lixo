@@ -1,10 +1,5 @@
 <template>
   <q-page class="page-shell">
-    <PageHeader
-      title="Mapa de pontos proximos"
-      subtitle="Informe o endereco para exibir no mapa os pontos mais proximos e comparar distancias."
-    />
-
     <q-card flat class="surface-card q-mb-md">
       <q-card-section>
         <div class="row q-col-gutter-sm items-center">
@@ -67,7 +62,6 @@ import markerBlue from '../assets/markers/marker-blue.svg'
 import markerOrange from '../assets/markers/marker-orange.svg'
 import { RESIDUE_TYPES } from '../constants/domain'
 import { collectionPointsService } from '../services/collection-points.service'
-import PageHeader from '../components/PageHeader.vue'
 
 const $q = useQuasar()
 const residueOptions = RESIDUE_TYPES

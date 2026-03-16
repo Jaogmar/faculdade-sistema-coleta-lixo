@@ -4,7 +4,7 @@ const collectionPoints = [
     nome: 'Ecoponto Centro',
     endereco: 'Av. Central, 100 - Centro',
     bairro: 'Centro',
-    tipos: ['reciclavel', 'eletronico'],
+    tipos: ['reciclável', 'eletrônico'],
     lat: -23.55052,
     lng: -46.633308
   },
@@ -13,7 +13,7 @@ const collectionPoints = [
     nome: 'Ponto Verde Norte',
     endereco: 'Rua das Flores, 215 - Santana',
     bairro: 'Santana',
-    tipos: ['reciclavel', 'oleo'],
+    tipos: ['reciclável', 'óleo'],
     lat: -23.50029,
     lng: -46.624478
   },
@@ -22,7 +22,7 @@ const collectionPoints = [
     nome: 'Ecoponto Sul',
     endereco: 'Av. Ipiranga, 1450 - Ipiranga',
     bairro: 'Ipiranga',
-    tipos: ['entulho', 'reciclavel'],
+    tipos: ['entulho', 'reciclável'],
     lat: -23.585147,
     lng: -46.609726
   },
@@ -31,7 +31,7 @@ const collectionPoints = [
     nome: 'Central Eletronica Oeste',
     endereco: 'Rua Cardoso, 85 - Perdizes',
     bairro: 'Perdizes',
-    tipos: ['eletronico'],
+    tipos: ['eletrônico'],
     lat: -23.536563,
     lng: -46.681662
   },
@@ -49,24 +49,24 @@ const collectionPoints = [
 const guide = [
   {
     id: 'g-eletronico',
-    tipo: 'eletronico',
-    titulo: 'Descarte de eletronico',
+    tipo: 'eletrônico',
+    titulo: 'Descarte de eletrônico',
     descricao:
-      'Leve computadores, cabos, baterias e pequenos eletros para pontos de coleta eletronicos. Nao descarte em lixo comum.'
+      'Leve computadores, cabos, baterias e pequenos eletros para pontos de coleta eletrônicos. Não descarte em lixo comum.'
   },
   {
     id: 'g-reciclavel',
-    tipo: 'reciclavel',
-    titulo: 'Descarte de reciclavel',
+    tipo: 'reciclável',
+    titulo: 'Descarte de reciclável',
     descricao:
-      'Separe papel, plastico, metal e vidro limpos e secos. Embale em sacos separados para facilitar a triagem.'
+      'Separe papel, plástico, metal e vidro limpos e secos. Embale em sacos separados para facilitar a triagem.'
   },
   {
     id: 'g-oleo',
-    tipo: 'oleo',
-    titulo: 'Descarte de oleo',
+    tipo: 'óleo',
+    titulo: 'Descarte de óleo',
     descricao:
-      'Armazene o oleo usado em garrafa PET fechada e entregue em um ponto que aceite oleo. Nunca jogue na pia.'
+      'Armazene o óleo usado em garrafa PET fechada e entregue em um ponto que aceite óleo. Nunca jogue na pia.'
   },
   {
     id: 'g-entulho',

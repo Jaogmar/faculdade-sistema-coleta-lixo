@@ -1,8 +1,8 @@
 <template>
   <q-page class="q-pa-md">
     <div class="page-head q-mb-md">
-      <h1>Notificacoes</h1>
-      <p>Atualizacoes automaticas de status das solicitacoes.</p>
+      <h1>Notificações</h1>
+      <p>Atualizações automáticas de status das solicitações.</p>
     </div>
 
     <q-card flat bordered>
@@ -28,7 +28,7 @@
           </q-item>
           <q-item v-if="notifications.length === 0">
             <q-item-section>
-              <q-item-label caption>Sem notificacoes no momento.</q-item-label>
+              <q-item-label caption>Sem notificações no momento.</q-item-label>
             </q-item-section>
           </q-item>
         </q-list>

@@ -1,10 +1,5 @@
 <template>
   <q-page class="page-shell">
-    <PageHeader
-      title="Pontos de coleta"
-      subtitle="Filtre por tipo de material para encontrar o local correto e agendar sua coleta com rapidez."
-    />
-
     <q-card flat class="surface-card q-mb-md">
       <q-card-section>
         <div class="row q-col-gutter-sm items-center">
@@ -18,7 +13,7 @@
               map-options
               clearable
               outlined
-              label="Tipo de residuo"
+              label="Tipo de resíduo"
             />
           </div>
           <div class="col-auto">
@@ -68,12 +63,12 @@
       <q-card class="surface-card" style="min-width: 360px; max-width: 720px; width: 100%">
         <q-card-section>
           <div class="text-h6">Agendar coleta domiciliar</div>
-          <div class="text-caption quiet-text">Formulario de agendamento rapido a partir de Pontos de Coleta.</div>
+          <div class="text-caption quiet-text">Formulário de agendamento rápido a partir de Pontos de Coleta.</div>
         </q-card-section>
 
         <q-card-section>
           <q-form @submit="submitSchedule" class="q-gutter-md">
-            <q-input v-model="scheduleForm.endereco" outlined label="Endereco de retirada" :rules="[required]" />
+            <q-input v-model="scheduleForm.endereco" outlined label="Endereço de retirada" :rules="[required]" />
 
             <q-select
               v-model="scheduleForm.tipoResiduo"
@@ -83,7 +78,7 @@
               emit-value
               map-options
               outlined
-              label="Tipo de residuo"
+              label="Tipo de resíduo"
               :rules="[required]"
             />
 
@@ -93,7 +88,7 @@
               min="1"
               max="5"
               outlined
-              label="Quantidade de itens (maximo 5)"
+              label="Quantidade de itens (máximo 5)"
               :rules="[required]"
             />
 
@@ -122,7 +117,6 @@ import { useQuasar } from 'quasar'
 import { RESIDUE_TYPES } from '../constants/domain'
 import { collectionPointsService } from '../services/collection-points.service'
 import { pickupService } from '../services/pickup.service'
-import PageHeader from '../components/PageHeader.vue'
 
 const $q = useQuasar()
 
@@ -144,7 +138,7 @@ const scheduleForm = ref({
   dataPreferencial: ''
 })
 
-const required = (value) => Boolean(value) || 'Campo obrigatorio'
+const required = (value) => Boolean(value) || 'Campo obrigatório'
 
 function openScheduleDialog (point) {
   scheduleForm.value = {
@@ -162,7 +156,7 @@ async function submitSchedule () {
 
   try {
     await pickupService.create(scheduleForm.value)
-    $q.notify({ type: 'positive', message: 'Solicitacao criada com sucesso.' })
+    $q.notify({ type: 'positive', message: 'Solicitação criada com sucesso.' })
     scheduleDialog.value.open = false
   } catch (error) {
     $q.notify({ type: 'negative', message: error.message })

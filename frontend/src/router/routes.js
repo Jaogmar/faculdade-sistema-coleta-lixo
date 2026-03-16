@@ -7,11 +7,8 @@ const routes = [
       { path: 'conta', component: () => import('pages/RegisterAccountPage.vue') },
       { path: 'pontos', component: () => import('pages/CollectionPointsPage.vue') },
       { path: 'mapa', component: () => import('pages/MapPointsPage.vue') },
-      { path: 'agendamento', component: () => import('pages/SchedulePickupPage.vue') },
-      { path: 'denuncia', component: () => import('pages/ReportIssuePage.vue') },
       { path: 'protocolos', component: () => import('pages/OpenProtocolsPage.vue') },
       { path: 'guia', component: () => import('pages/GuidePage.vue') },
-      { path: 'avaliacoes', component: () => import('pages/RateServicesPage.vue') },
       { path: 'notificacoes', component: () => import('pages/NotificationsPage.vue') }
     ]
   },

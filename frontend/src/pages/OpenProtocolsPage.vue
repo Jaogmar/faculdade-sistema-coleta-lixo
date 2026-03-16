@@ -2,8 +2,32 @@
   <q-page class="q-pa-md">
     <div class="page-head q-mb-md">
       <h1>Protocolos abertos</h1>
-      <p>Acompanhe solicitacoes de coleta e denuncias em andamento.</p>
+      <p>Acompanhe solicitações de coleta e denúncias em andamento.</p>
     </div>
+
+    <q-card flat bordered class="q-mb-md">
+      <q-card-section>
+        <div class="row q-col-gutter-sm items-center">
+          <div class="col-auto">
+            <q-btn color="primary" label="Solicitar coleta" @click="openPickupDialog" />
+          </div>
+          <div class="col-auto">
+            <q-btn color="secondary" label="Registrar denúncia" @click="openReportDialog" />
+          </div>
+          <div class="col-12 col-sm-4 col-md-3 q-ml-auto">
+            <q-select
+              v-model="selectedFilter"
+              :options="filterOptions"
+              outlined
+              emit-value
+              map-options
+              label="Filtrar protocolos"
+              @update:model-value="loadProtocols"
+            />
+          </div>
+        </div>
+      </q-card-section>
+    </q-card>
 
     <q-card flat bordered>
       <q-card-section>
@@ -16,7 +40,7 @@
               </q-item-label>
             </q-item-section>
             <q-item-section side>
-              <div class="row q-gutter-xs">
+              <div v-if="!item.isFinalizedStatus" class="row q-gutter-xs">
                 <q-btn
                   dense
                   size="sm"
@@ -26,16 +50,29 @@
                 />
                 <q-btn dense size="sm" color="positive" label="Concluir" @click="changeStatus(item, 'concluido')" />
               </div>
+
+              <div v-else class="row q-gutter-xs justify-end">
+                <q-btn
+                  v-if="!item.avaliado"
+                  dense
+                  size="sm"
+                  color="primary"
+                  label="Avaliar serviço"
+                  @click="openRateDialog(item)"
+                />
+                <q-badge v-else color="positive" label="Avaliado" />
+              </div>
             </q-item-section>
           </q-item>
           <q-item v-if="protocols.length === 0">
             <q-item-section>
-              <q-item-label caption>Nenhum protocolo aberto no momento.</q-item-label>
+              <q-item-label caption>{{ emptyMessage }}</q-item-label>
             </q-item-section>
           </q-item>
         </q-list>
       </q-card-section>
     </q-card>
+
   </q-page>
 </template>
 
@@ -45,16 +82,29 @@ import { useQuasar, date } from 'quasar'
 import { protocolService } from '../services/protocol.service'
 import { pickupService } from '../services/pickup.service'
 import { reportService } from '../services/report.service'
+import PickupProtocolDialog from '../components/PickupProtocolDialog.vue'
+import ReportProtocolDialog from '../components/ReportProtocolDialog.vue'
+import RateProtocolDialog from '../components/RateProtocolDialog.vue'
 
 const $q = useQuasar()
 const protocols = ref([])
+const selectedFilter = ref('abertos')
+const filterOptions = [
+  { label: 'Abertos', value: 'abertos' },
+  { label: 'Finalizados', value: 'finalizados' }
+]
+
+const emptyMessage = ref('Nenhum protocolo aberto no momento.')
 
 function formatDate (value) {
   return date.formatDate(value, 'DD/MM/YYYY HH:mm')
 }
 
 async function loadProtocols () {
-  protocols.value = await protocolService.listOpen()
+  protocols.value = await protocolService.listByFilter(selectedFilter.value)
+  emptyMessage.value = selectedFilter.value === 'finalizados'
+    ? 'Nenhum protocolo finalizado no momento.'
+    : 'Nenhum protocolo aberto no momento.'
 }
 
 async function changeStatus (item, status) {
@@ -70,6 +120,33 @@ async function changeStatus (item, status) {
   } catch (error) {
     $q.notify({ type: 'negative', message: error.message })
   }
+}
+
+function openPickupDialog () {
+  $q.dialog({
+    component: PickupProtocolDialog
+  })
+    .onOk(loadProtocols)
+    .onCancel(loadProtocols)
+}
+
+function openReportDialog () {
+  $q.dialog({
+    component: ReportProtocolDialog
+  })
+    .onOk(loadProtocols)
+    .onCancel(loadProtocols)
+}
+
+function openRateDialog (item) {
+  $q.dialog({
+    component: RateProtocolDialog,
+    componentProps: {
+      protocolItem: item
+    }
+  })
+    .onOk(loadProtocols)
+    .onCancel(loadProtocols)
 }
 
 onMounted(loadProtocols)

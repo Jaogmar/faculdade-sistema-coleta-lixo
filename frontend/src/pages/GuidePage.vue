@@ -2,7 +2,7 @@
   <q-page class="q-pa-md">
     <div class="page-head q-mb-md">
       <h1>Guia de descarte</h1>
-      <p>Consulte orientacoes por tipo de material.</p>
+      <p>Consulte orientações por tipo de material.</p>
     </div>
 
     <div class="row q-col-gutter-md">

@@ -2,7 +2,7 @@
   <q-page class="q-pa-md">
     <div class="page-head q-mb-md">
       <h1>Criar conta</h1>
-      <p>Cadastro simples para gerenciar solicitacoes.</p>
+      <p>Cadastro simples para gerenciar solicitações.</p>
     </div>
 
     <q-card flat bordered class="card-limit">
@@ -13,7 +13,7 @@
           <q-input v-model="form.senha" type="password" label="Senha" outlined :rules="[required]" />
           <q-input
             v-model="form.endereco"
-            label="Endereco"
+            label="Endereço"
             hint="Exemplo: Rua X, 100 - Centro"
             outlined
             :rules="[required]"
@@ -67,7 +67,7 @@ const form = ref({
   endereco: ''
 })
 
-const required = (value) => Boolean(value) || 'Campo obrigatorio'
+const required = (value) => Boolean(value) || 'Campo obrigatório'
 
 function reset () {
   form.value = {

@@ -1,21 +1,5 @@
 <template>
   <q-page class="page-shell page-dashboard">
-    <PageHeader
-      title="Central do Cidadao"
-      subtitle="Consulte pontos, agende coleta domiciliar, registre denuncias e acompanhe seus protocolos em um unico lugar."
-    >
-      <template #actions>
-        <q-btn
-          color="white"
-          text-color="primary"
-          no-caps
-          rounded
-          label="Agendar coleta"
-          to="/agendamento"
-        />
-      </template>
-    </PageHeader>
-
     <section class="row q-col-gutter-md q-mb-lg">
       <div class="col-12 col-sm-6 col-lg-3">
         <StatCard label="Pontos de coleta" :value="stats.points" icon="recycling" />
@@ -24,10 +8,10 @@
         <StatCard label="Coletas abertas" :value="stats.openPickups" icon="event" />
       </div>
       <div class="col-12 col-sm-6 col-lg-3">
-        <StatCard label="Denuncias abertas" :value="stats.openReports" icon="report_problem" />
+        <StatCard label="Denúncias abertas" :value="stats.openReports" icon="report_problem" />
       </div>
       <div class="col-12 col-sm-6 col-lg-3">
-        <StatCard label="Notificacoes nao lidas" :value="stats.unreadNotifications" icon="notifications" />
+        <StatCard label="Notificações não lidas" :value="stats.unreadNotifications" icon="notifications" />
       </div>
     </section>
 
@@ -60,7 +44,6 @@ import { collectionPointsService } from '../services/collection-points.service'
 import { pickupService } from '../services/pickup.service'
 import { reportService } from '../services/report.service'
 import { notificationService } from '../services/notification.service'
-import PageHeader from '../components/PageHeader.vue'
 import StatCard from '../components/StatCard.vue'
 
 const stats = ref({
@@ -71,20 +54,6 @@ const stats = ref({
 })
 
 const quickActions = [
-  {
-    to: '/agendamento',
-    icon: 'event',
-    title: 'Agendar coleta domiciliar',
-    caption: 'Solicite retirada de itens grandes com protocolo automatico.',
-    button: 'Agendar agora'
-  },
-  {
-    to: '/denuncia',
-    icon: 'report_problem',
-    title: 'Registrar denuncia',
-    caption: 'Informe localizacao e descricao do descarte irregular.',
-    button: 'Abrir denuncia'
-  },
   {
     to: '/pontos',
     icon: 'recycling',
@@ -105,13 +74,6 @@ const quickActions = [
     title: 'Ler guia de descarte',
     caption: 'Aprenda como separar cada material antes do descarte.',
     button: 'Abrir guia'
-  },
-  {
-    to: '/avaliacoes',
-    icon: 'reviews',
-    title: 'Avaliar atendimento',
-    caption: 'Envie nota apos conclusao de coleta ou denuncia.',
-    button: 'Avaliar servicos'
   }
 ]
 

@@ -20,11 +20,11 @@
           dense
           round
           icon="account_circle"
-          aria-label="Menu do usuario"
+          aria-label="Menu do usuário"
         >
           <q-menu>
             <q-list style="min-width: 220px">
-              <q-item-label header>Acesso rapido</q-item-label>
+              <q-item-label header>Acesso rápido</q-item-label>
               <q-item
                 v-for="item in userMenuItems"
                 :key="item.to"
@@ -86,18 +86,15 @@
 import { ref } from 'vue'
 
 const menuItems = [
-  { to: '/', icon: 'dashboard', label: 'Inicio', caption: 'Visao geral das solicitacoes' },
-  { to: '/pontos', icon: 'recycling', label: 'Pontos de coleta', caption: 'Consulta e filtros' },
-  { to: '/mapa', icon: 'map', label: 'Mapa de pontos', caption: 'Pontos proximos no mapa' },
-  { to: '/denuncia', icon: 'report_problem', label: 'Registrar denuncia', caption: 'Descarte irregular' },
+  { to: '/', icon: 'dashboard', label: 'Início', caption: 'Visão geral das solicitações' },
+  { to: '/mapa', icon: 'map', label: 'Mapa de pontos', caption: 'Pontos próximos no mapa' },
   { to: '/protocolos', icon: 'fact_check', label: 'Protocolos abertos', caption: 'Acompanhamento de status' },
   { to: '/guia', icon: 'menu_book', label: 'Guia de descarte', caption: 'Como descartar corretamente' }
 ]
 
 const userMenuItems = [
-  { to: '/conta', icon: 'person_add', label: 'Criar conta', caption: 'Cadastro de usuario' },
-  { to: '/notificacoes', icon: 'notifications', label: 'Notificacoes', caption: 'Acompanhar avisos' },
-  { to: '/avaliacoes', icon: 'reviews', label: 'Avaliar servicos', caption: 'Enviar feedback' }
+  { to: '/conta', icon: 'person_add', label: 'Criar conta', caption: 'Cadastro de usuário' },
+  { to: '/notificacoes', icon: 'notifications', label: 'Notificações', caption: 'Acompanhar avisos' },
 ]
 
 const leftDrawerOpen = ref(false)
